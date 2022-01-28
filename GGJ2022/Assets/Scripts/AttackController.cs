@@ -58,8 +58,8 @@ public class AttackController : MonoBehaviour
 
     }
 
-    
-    
+
+
     // Pierce (ramping up damage?)
     // Shoot forward and bacward
     // ricocheting bullets (bouncy bullets )
@@ -70,5 +70,80 @@ public class AttackController : MonoBehaviour
     // Shoot twice
 
 
+
+
+
+
+
+
+    //Blakes Demo code
+    /*
+     using AbilitySystem;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+
+[RequireComponent(typeof(WeaponAbilityComponent))]
+public class ThisClassMeansThisObjectCanAttack : MonoBehaviour
+{
+    private WeaponAbilityComponent weapon;
+
+    BulletClass bull;
+
+    private void Awake()
+    {
+        weapon = GetComponent<WeaponAbilityComponent>();
+    }
+
+
+    public void UseAttack()
+    {
+
+
+        BulletClass bullet = Instantiate(bull);
+        bullet.OnInstantiation();
+
+        abilityComponent.Use(bullet);
+    }
+
+
+}
+
+
+
+
+public class BulletClass : MonoBehaviour
+{
+
+    public Vector3 direction;
+    public float damage;
+    public BulletModifier[] modifiers;
+    public LayerMask hittableLayer;
+
+    public void OnInstantiation(Transform fromTransform, BulletModifier[] mods = null)
+    {
+        this.transform.rotation = fromTransform.rotation;
+        direction = transform.eulerAngles;
+
+        if (mods != null)
+        {
+            modifiers = mods;
+        }
+    }
+
+
+    private void OnDisable()
+    {
+        modifiers = null;
+        hittableLayer = 0;
+        damage = 0;
+        direction = Vector3.zero;
+    }
+}
+
+     */
 
 }

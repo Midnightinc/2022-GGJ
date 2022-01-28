@@ -102,6 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7842399277896533177}
+  - component: {fileID: 8006373670915527386}
   m_Layer: 0
   m_Name: Room_Divided_Fab
   m_TagString: Untagged
@@ -129,6 +130,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8006373670915527386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555033434826477212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd49780dc3cbd9f4588732c6edec83d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpawn: {x: 1.56, y: 0, z: -5.43}
+  AISpawnLocations: []
+  settings:
+    gizmoSize: 0.46
 --- !u!1 &1637352311372628717
 GameObject:
   m_ObjectHideFlags: 0
