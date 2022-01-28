@@ -26,6 +26,17 @@ namespace AbilitySystem
             }
         }
 
+        public void Use(GameObject[] bullets)
+        {
+            foreach (var mod in abilityModifiers)
+            {
+                foreach (var bullet in bullets)
+                {
+                    mod.Use(bullet);
+                }
+            }
+        }
+
 
         public bool ContainsAbilityType(Type type)
         {
@@ -59,18 +70,18 @@ namespace AbilitySystem
 
 
 
-    public abstract class AbilityModifier
+    public abstract class AbilityModifier : ScriptableObject
     {
-        public event Action<WeaponAbilityComponent> OnAdded;
+        public event Action<WeaponAbilityComponent, bool> OnAdded;
 
         public AbilityModifier() { }
 
-        public void OnCollection(WeaponAbilityComponent abilityComponent)
+        public void OnCollection(WeaponAbilityComponent abilityComponent, bool isAI = false)
         {
-            OnAdded?.Invoke(abilityComponent);
+            OnAdded?.Invoke(abilityComponent, isAI);
         }
 
-        public abstract float Use(GameObject bullet);
+        public abstract void Use(GameObject bullet);
     }
 
 
