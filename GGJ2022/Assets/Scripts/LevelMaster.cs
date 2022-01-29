@@ -91,4 +91,43 @@ namespace LevelManager
 #endif
 
     }
+
+
+
+
+
+
+    public class BulletPool : MonoBehaviour
+    {
+        public static BulletPool Instance;
+
+        public int poolSize;
+
+        private GameObject[] pool;
+        private int lastRetrieved = 0;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else if (Instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
+
+
+
+        public GameObject GetBullet()
+        {
+            if (lastRetrieved == poolSize)
+            {
+                lastRetrieved = 0;
+            }
+            return pool[lastRetrieved++];
+        }
+    }
 }
