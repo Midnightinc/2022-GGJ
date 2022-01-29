@@ -97,6 +97,7 @@ public class AiBehaviour : MonoBehaviour
     private void Update()
     {
         aiTransform.LookAt(playerPosition);
+        aiTransform.rotation = new Quaternion(0, aiTransform.rotation.y, aiTransform.rotation.z, aiTransform.rotation.w);
     }
 
     /// <summary>
