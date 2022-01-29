@@ -17,8 +17,6 @@ public class AttackController : MonoBehaviour
 
     public void UseAttack()
     {
-
-
         var bullet = BulletPool.Instance.GetBullet();
         bullet.OnInstantiation(transform);
 
