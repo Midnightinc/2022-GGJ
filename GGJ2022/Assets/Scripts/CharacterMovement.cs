@@ -26,6 +26,7 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         ccharacter = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Confined;
         // playeranim = GetComponent<Animator>();
     }
 
