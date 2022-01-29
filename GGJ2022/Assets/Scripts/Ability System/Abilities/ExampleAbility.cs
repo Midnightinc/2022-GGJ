@@ -58,7 +58,7 @@ namespace AbilitySystem
         /// </summary>
         /// <param name="bullet"></param>
         /// <returns></returns>
-        public override void Use(GameObject bullet)
+        public override void Use(BulletClass bullet)
         {
 
             //Example use of "SomeValue"

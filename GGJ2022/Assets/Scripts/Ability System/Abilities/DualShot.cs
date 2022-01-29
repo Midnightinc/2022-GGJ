@@ -4,9 +4,8 @@ namespace AbilitySystem
 {
     public class DualShot : WeaponModifier
     {
-        public override void Use(GameObject bullet)
+        public override void Use(BulletClass bullet)
         {
-            throw new System.NotImplementedException();
         }
     }
 

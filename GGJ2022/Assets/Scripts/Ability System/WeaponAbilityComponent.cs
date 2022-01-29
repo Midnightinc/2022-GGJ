@@ -18,7 +18,7 @@ namespace AbilitySystem
 
 
 
-        public void Use(GameObject bullet)
+        public void Use(BulletClass bullet)
         {
             foreach (var mod in abilityModifiers)
             {
@@ -26,7 +26,7 @@ namespace AbilitySystem
             }
         }
 
-        public void Use(GameObject[] bullets)
+        public void Use(BulletClass[] bullets)
         {
             foreach (var mod in abilityModifiers)
             {
@@ -81,7 +81,7 @@ namespace AbilitySystem
             OnAdded?.Invoke(abilityComponent, isAI);
         }
 
-        public abstract void Use(GameObject bullet);
+        public abstract void Use(BulletClass bullet);
     }
 
 
