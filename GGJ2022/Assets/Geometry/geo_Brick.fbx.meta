@@ -3,7 +3,17 @@ guid: e9c71cd61148b4d4abdf2c51d4b1fd34
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_Brick
+    second: {fileID: 2100000, guid: 3bd2a533cfda5de4ab79078091b4968b, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: t_holelessbrick
+    second: {fileID: 2800000, guid: 7cfbaa0bde5a34b458a24abc6b8e73bc, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -44,7 +54,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     fileIdsGeneration: 2
-    swapUVChannels: 0
+    swapUVChannels: 1
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0

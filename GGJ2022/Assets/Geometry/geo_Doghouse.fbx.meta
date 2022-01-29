@@ -3,7 +3,12 @@ guid: 6350778a70da5bb40a362286199bdefb
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_Doghouse
+    second: {fileID: 2100000, guid: 3bd2a533cfda5de4ab79078091b4968b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -3,7 +3,18 @@ guid: b6398d242fe14224e81bcc5139272b44
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_BBQ
+    second: {fileID: -3155474109846492374, guid: 02e90b53f7af33d49af1dc0fe52209ae,
+      type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: t_bbq
+    second: {fileID: 2800000, guid: b5de0e3e975dd1949904085c4677c2e2, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8667352999067486641}
   - component: {fileID: 6894000476954918267}
   m_Layer: 0
-  m_Name: geo_Fence
+  m_Name: fab_Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4675794209574074871, guid: 930601411d43de044b66a871a4f50b3f, type: 3}
+  - {fileID: 2100000, guid: 3bd2a533cfda5de4ab79078091b4968b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
