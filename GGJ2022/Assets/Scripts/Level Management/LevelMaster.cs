@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LevelManager
 {
@@ -12,6 +14,28 @@ namespace LevelManager
 
         [Header("AI Properties")]
         [SerializeField] private Vector3[] AISpawnLocations;
+
+        [Header("Unity Events")]
+        public UnityEvent OnLoaded;
+        public UnityEvent OnUnloaded;
+
+
+        /// <summary>
+        /// Loads this level and runs OnLoad unity event
+        /// </summary>
+        public void Load()
+        {
+            gameObject.SetActive(true);
+            OnLoaded?.Invoke();
+        }
+
+        /// <summary>
+        /// Unloads this level and runs OnUnloaded event
+        /// </summary>
+        public void Unload()
+        {
+            gameObject.SetActive(false);
+        }
 
 
         /// <summary>
