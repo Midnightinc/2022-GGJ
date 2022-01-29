@@ -20,6 +20,7 @@ public class EndRoundUI : MonoBehaviour
     }
 
     [SerializeField] EndRoundReferences endRoundChoice;
+    [SerializeField] Text waveCounter;
     // To be tested (Changing images for specic ability inside index)
     [SerializeField] Sprite choiceImages;
     //Stores all abilities found in resources folder
@@ -31,6 +32,7 @@ public class EndRoundUI : MonoBehaviour
     bool choiceTaken = false;
     // Set to true if player completes a room for  endround
     public bool endround;
+    private int waveCounqured;
 
     void Start()
     {
@@ -42,7 +44,6 @@ public class EndRoundUI : MonoBehaviour
             //Loop through the resources folder to find all instances of the inherited types found in the outer loop
             foreach (var item in Resources.FindObjectsOfTypeAll(type))
             {
-
                 //don't add duplicates - duplicates will occur because we're searching for all types(including the base type)
                 if (!abilities.Contains(item))
                 {
@@ -54,9 +55,11 @@ public class EndRoundUI : MonoBehaviour
         // Testing below on changing the ability image
         abilityImages.Add(choiceImages);
 
+        endRoundChoice.firstChoice.SetActive(false);
+        endRoundChoice.secondChoice.SetActive(false);
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         RoundCheck();
     }
@@ -64,11 +67,13 @@ public class EndRoundUI : MonoBehaviour
     private void RoundCheck()
     {
          // Check if the end round is over
-        if (endround == true)
+        if (endround)
         {
             // Set both the gameobject UI's to true
             endRoundChoice.firstChoice.SetActive(true);
             endRoundChoice.secondChoice.SetActive(true);
+            FirstChoice();
+            SecondChoice();
             // Set time to "pause"
             Time.timeScale = 0;
         }
@@ -80,11 +85,14 @@ public class EndRoundUI : MonoBehaviour
             endRoundChoice.secondChoice.SetActive(false);
             // Enables back time incrementation
             Time.timeScale = 1;
+            choiceTaken = false;
+            endround = false;
+            AddWave(1);
         }
 
     }
 
-    public void FirstChoice()
+    private void FirstChoice()
     {
         if (!choiceTaken)
         {
@@ -122,11 +130,9 @@ public class EndRoundUI : MonoBehaviour
             Image firstIndexImage = Instantiate(endRoundChoice.firstImageChoice);
             // Assign the image in the selected number
             firstIndexImage.sprite = abilityImages[firstIndex];
-            // Set choice taken to true to go to next round
-            choiceTaken = true;
         }
     }
-    public void SecondChoice()
+    private void SecondChoice()
     {
         if (!choiceTaken)
         {
@@ -164,8 +170,25 @@ public class EndRoundUI : MonoBehaviour
             Image secondIndexImage = Instantiate(endRoundChoice.secondImageChoice);
             // Assign the image in the selected number
             secondIndexImage.sprite = abilityImages[secondIndex];
-            // Set choice taken to true to go to next round
-            choiceTaken = true;
         }
+    }
+
+    public void PickedFirst()
+    {
+        // Refer the upgrade here probably? (*cough* blake *cough*)
+        choiceTaken = true;
+        Debug.Log("choice 1 button pressed");
+    }
+
+    public void PickedSecond()
+    {
+        // Refer the upgrade here probably? (*cough* blake *cough*)
+        choiceTaken = true;
+        Debug.Log("choice 2 button pressed");
+    }
+    public void AddWave(int waveFinished)
+    {
+        waveCounqured += waveFinished;
+        waveCounter.text = $"Wave: {waveCounqured}";
     }
 }
