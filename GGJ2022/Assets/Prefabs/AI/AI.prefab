@@ -200,7 +200,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 4294967295
   shooting:
-    ShootingCooldown: 0
+    ShootingCooldown: 0.5
     ShootingCooldownMaxAddition: 0
     BulletCollideLayers:
       serializedVersion: 2

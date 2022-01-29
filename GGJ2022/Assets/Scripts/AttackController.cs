@@ -1,4 +1,5 @@
 ﻿using AbilitySystem;
+using BulletHandlers;
 using UnityEngine;
 
 [RequireComponent(typeof(WeaponAbilityComponent))]
@@ -18,7 +19,7 @@ public class AttackController : MonoBehaviour
     {
 
 
-        BulletClass bullet = Instantiate(bull);
+        var bullet = BulletPool.Instance.GetBullet();
         bullet.OnInstantiation(transform);
 
         weapon.Use(bullet);
