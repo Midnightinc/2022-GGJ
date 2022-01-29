@@ -93,6 +93,14 @@ public class AiBehaviour : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
+        //If player not in LOS exits function
+        if (!PlayerInLOS())
+        {
+            //Starts the function delay
+            this.CallWithDelay(Shoot, FindShootCooldown());
+            return;
+        }
+
         //Blake do your stuff here
 
         //Starts the delay again
@@ -114,14 +122,6 @@ public class AiBehaviour : MonoBehaviour
     /// <remarks>Must be within the movement 'donut' and on navmesh</remarks>
     private void UpdateDestination()
     {
-        //If player not in LOS exits function
-        if (!PlayerInLOS())
-        {
-            //Starts the next position update delay
-            this.CallWithDelay(UpdateDestination, movement.DestinationUpdateDelay);
-            return;
-        }
-
         //Finds a new destination
         bool posFound = false;
         Vector3 newPosition = Vector3.zero;
