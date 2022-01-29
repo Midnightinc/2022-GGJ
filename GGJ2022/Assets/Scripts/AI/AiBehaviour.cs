@@ -10,7 +10,7 @@ using UnityEngine.AI;
 /// Major Revision History: 
 ///     - 29th of January 2022 - The AI will move within given range and shoot function is called after delay (just needs shooting algrothim)
 /// </summary>
-[RequireComponent(typeof(Rigidbody), typeof(NavMeshAgent), typeof(NavMeshObstacle))]
+[RequireComponent(typeof(Rigidbody), typeof(NavMeshAgent), typeof(NavMeshObstacle)), RequireComponent(typeof(AttackController))]
 public class AiBehaviour : MonoBehaviour
 {
     private const float SmallestInteriorRadius = 0.1f;
@@ -26,6 +26,7 @@ public class AiBehaviour : MonoBehaviour
     private CharacterController aiController = null;
     private NavMeshAgent aiNavAgent = null;
     private CapsuleCollider aiCollider = null;
+    private AttackController attackController;
     [SerializeField, Tooltip("Variables containing to movement")] private Movement movement = new Movement();
     [SerializeField, Tooltip("Variables containing to shooting")] private Shooting shooting = new Shooting();
 
@@ -67,6 +68,8 @@ public class AiBehaviour : MonoBehaviour
         aiNavAgent = GetComponent<NavMeshAgent>();
         aiNavAgent.speed = movement.MoveSpeed;
 
+        attackController = GetComponent<AttackController>();
+
         //Makes sure that the radius' never get too small
         if (movement.InteriorCircleRadius < SmallestInteriorRadius)
         {
@@ -102,6 +105,7 @@ public class AiBehaviour : MonoBehaviour
         }
 
         //Blake do your stuff here
+        attackController.UseAttack();
 
         //Starts the delay again
         this.CallWithDelay(Shoot, FindShootCooldown());
