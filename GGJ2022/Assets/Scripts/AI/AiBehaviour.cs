@@ -92,6 +92,14 @@ public class AiBehaviour : MonoBehaviour
     }
 
     /// <summary>
+    /// Forces the AI to look at the player
+    /// </summary>
+    private void Update()
+    {
+        aiTransform.LookAt(playerPosition);
+    }
+
+    /// <summary>
     /// The AI will fire it's weapon
     /// </summary>
     private void Shoot()
