@@ -26,7 +26,6 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         ccharacter = GetComponent<CharacterController>();
-
         // playeranim = GetComponent<Animator>();
     }
 
@@ -65,7 +64,7 @@ public class CharacterMovement : MonoBehaviour
     {
         // To Be Tested:
 
-        characterAngle += Input.GetAxis("Mouse Y") * movementValues.rotationSpeed * -Time.deltaTime;
+        characterAngle += Input.GetAxis("Mouse X") * movementValues.rotationSpeed * Time.deltaTime;
         characterAngle = Mathf.Clamp(characterAngle, 0, 360);
         player.localRotation = Quaternion.AngleAxis(characterAngle, Vector3.up);
 
