@@ -3,14 +3,6 @@ using UnityEngine;
 
 namespace AbilitySystem
 {
-    public class DualShot : WeaponModifier
-    {
-        public override void Use(BulletClass bullet)
-        {
-        }
-    }
-
-
     [CreateAssetMenu(fileName = "New Multishot", menuName = "Abilities/New MultiShot Ability", order = 1)]
 
     public class MultiShot : WeaponModifier
@@ -38,9 +30,12 @@ namespace AbilitySystem
 
         public override void Use(BulletClass bullet)
         {
-            for (int i = 0; i < quantity; i++)
+            for (int i = -(quantity / 2); i < quantity / 2; i++)
             {
-                //setup bullet
+                var newBullet = BulletPool.Instance.GetBullet();
+                newBullet.modifiers = bullet.modifiers;
+
+                newBullet.transform.Rotate(0, angleOffset * i, 0);
             }
         }
 
