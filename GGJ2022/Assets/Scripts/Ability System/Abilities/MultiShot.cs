@@ -32,8 +32,12 @@ namespace AbilitySystem
         {
             for (int i = -(quantity / 2); i < quantity / 2; i++)
             {
+                if (i == 0)
+                {
+                    continue;
+                }
                 var newBullet = BulletPool.Instance.GetBullet();
-                newBullet.modifiers = bullet.modifiers;
+                newBullet.OnInstantiation(bullet);
 
                 newBullet.transform.Rotate(0, angleOffset * i, 0);
             }

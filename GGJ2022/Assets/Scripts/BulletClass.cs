@@ -114,9 +114,32 @@ public class BulletClass : MonoBehaviour
 
         this.fromCollider = fromCollider;
         Physics.IgnoreCollision(_collider, fromCollider);
-        
+
 
         transform.position = fromTransform.position;
+        gameObject.SetActive(true);
+    }
+
+
+    public void OnInstantiation(BulletClass bullet)
+    {
+        this.transform.rotation = bullet.transform.rotation;
+        direction = bullet.transform.forward;
+        direction.y = 0;
+        direction = direction.normalized;
+
+        damage = baseDamage;
+
+        this.shouldRicochet = bullet.shouldRicochet;
+        this.yepPenetrate = bullet.yepPenetrate;
+
+        modifiers = bullet.modifiers;
+
+        this.fromCollider = bullet.fromCollider;
+        Physics.IgnoreCollision(_collider, fromCollider);
+
+
+        transform.position = bullet.transform.position;
         gameObject.SetActive(true);
     }
 }
