@@ -2,12 +2,10 @@
 using BulletHandlers;
 using UnityEngine;
 
-[RequireComponent(typeof(WeaponAbilityComponent))]
+[RequireComponent(typeof(WeaponAbilityComponent), typeof(HealthSystem))]
 public class AttackController : MonoBehaviour
 {
     private WeaponAbilityComponent weapon;
-
-    [SerializeField] private BulletClass bull;
 
     private void Awake()
     {
@@ -18,7 +16,10 @@ public class AttackController : MonoBehaviour
     public void UseAttack()
     {
         var bullet = BulletPool.Instance.GetBullet();
-        bullet.OnInstantiation(transform);
+
+        var collider = GetComponent<Collider>();
+
+        bullet.OnInstantiation(transform, collider);
 
         weapon.Use(bullet);
     }

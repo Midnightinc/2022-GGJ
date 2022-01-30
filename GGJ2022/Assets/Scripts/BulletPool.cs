@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace BulletHandlers
 {
@@ -42,6 +43,11 @@ namespace BulletHandlers
             }
 
             return pool[lastRetrieved++];
+        }
+
+        public void ReturnToPool(BulletClass bullet)
+        {
+            bullet.gameObject.SetActive(false);
         }
     }
 }

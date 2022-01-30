@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(AttackController), typeof(Rigidbody))]
 public class CharacterMovement : MonoBehaviour
 {
     [System.Serializable]
@@ -18,6 +20,10 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private Transform player;
     float characterAngle;
+
+
+    private AttackController _atkController;
+    private Rigidbody _rb;
     
 
     private float gravity =  -9.8f;
@@ -26,6 +32,9 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         ccharacter = GetComponent<CharacterController>();
+
+        _atkController = GetComponent<AttackController>();
+        _rb = GetComponent<Rigidbody>();
         // playeranim = GetComponent<Animator>();
     }
 
@@ -40,6 +49,11 @@ public class CharacterMovement : MonoBehaviour
     {
         movementInput.x = Input.GetAxisRaw("Horizontal");
         movementInput.z = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            _atkController.UseAttack();
+        }
     }
 
     private void UpdateMovement()
@@ -51,22 +65,28 @@ public class CharacterMovement : MonoBehaviour
         if (movementInput != Vector3.zero)
         {
             // Moves the character
-            ccharacter.Move(move * movementValues.movementSpeed * Time.deltaTime);
+            //ccharacter.Move(move * movementValues.movementSpeed * Time.deltaTime);
+            _rb.MovePosition(transform.position + move * Time.deltaTime * movementValues.movementSpeed);
             // Rptate towards specified movement direction
             Quaternion toRotation = Quaternion.LookRotation(new Vector3(movementInput.x, 0, movementInput.z), Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, movementValues.rotationSpeed * Time.deltaTime);
         }
-        /*playeranim.SetFloat("MovementX", movementInput.x);
-        playeranim.SetFloat("MovementY", movementInput.y);*/
     }
 
     void LookDirection()
     {
         // To Be Tested:
 
-        characterAngle += Input.GetAxis("Mouse X") * movementValues.rotationSpeed * Time.deltaTime;
-        characterAngle = Mathf.Clamp(characterAngle, 0, 360);
-        player.localRotation = Quaternion.AngleAxis(characterAngle, Vector3.up);
+        Vector3 lookatPoint = Vector3.zero;
+        var worldRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var didHit = Physics.Raycast(worldRay, out RaycastHit hit);
+        lookatPoint = hit.point;
+        lookatPoint.y = player.position.y;
+        if (!didHit)
+        {
+            return;
+        }
+        player.localRotation = Quaternion.LookRotation((lookatPoint - player.position), Vector3.up);
 
     }
 }

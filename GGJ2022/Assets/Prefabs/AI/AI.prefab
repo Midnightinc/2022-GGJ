@@ -18,7 +18,8 @@ GameObject:
   - component: {fileID: 1444998205912283093}
   - component: {fileID: 5417428190825677672}
   - component: {fileID: 7457774681877401962}
-  m_Layer: 0
+  - component: {fileID: -6612853903707208906}
+  m_Layer: 9
   m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347312c3a0a53634387cad134e7369a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bull: {fileID: 3541109498382638110, guid: abe3a08c079283b4f95d675d173a6e9a, type: 3}
 --- !u!114 &7457774681877401962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,3 +207,19 @@ MonoBehaviour:
       m_Bits: 0
     BulletDamage: 0
     BulletSpeed: 0
+--- !u!114 &-6612853903707208906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223238297922067239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5fd5d5f96ddf14a88d31b6790c2c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
