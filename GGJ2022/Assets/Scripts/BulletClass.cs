@@ -102,6 +102,7 @@ public class BulletClass : MonoBehaviour
         direction.y = 0;
         direction = direction.normalized;
 
+        damage = baseDamage;
 
         this.shouldRicochet = shouldRicochet;
         this.yepPenetrate = yepPenetrate;
