@@ -142,10 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd49780dc3cbd9f4588732c6edec83d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawn: {x: 1.56, y: 0, z: -5.43}
-  AISpawnLocations: []
+  playerSpawn: {x: 0, y: 1, z: -8}
+  AISpawnLocations:
+  - {x: 0, y: 1, z: 8}
   settings:
-    gizmoSize: 0.46
+    gizmoSize: 0.5
 --- !u!1 &1637352311372628717
 GameObject:
   m_ObjectHideFlags: 0
