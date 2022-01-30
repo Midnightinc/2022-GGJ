@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(AttackController), typeof(Rigidbody))]
-public class CharacterMovement : MonoBehaviour
+[RequireComponent(typeof(AttackController), typeof(Rigidbody), typeof(HealthSystem))]
+public class CharacterMovement : MonoBehaviour, IAtributeIncrease
 {
     [System.Serializable]
     private struct MovementValues
@@ -14,6 +14,7 @@ public class CharacterMovement : MonoBehaviour
         public float rotationSpeed;
     }
 
+    private float initialMovementSpeed = 0f;
     [SerializeField] private MovementValues movementValues;
     // [SerializeField] public Animator playeranim;
     CharacterController ccharacter;
@@ -21,7 +22,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Transform player;
     float characterAngle;
 
-
+    private HealthSystem playerHealth = null;
     private AttackController _atkController;
     private Rigidbody _rb;
     
@@ -32,9 +33,10 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         ccharacter = GetComponent<CharacterController>();
-
+        playerHealth = GetComponent<HealthSystem>();
         _atkController = GetComponent<AttackController>();
         _rb = GetComponent<Rigidbody>();
+        initialMovementSpeed = movementValues.movementSpeed;
         // playeranim = GetComponent<Animator>();
     }
 
@@ -88,5 +90,30 @@ public class CharacterMovement : MonoBehaviour
         }
         player.localRotation = Quaternion.LookRotation((lookatPoint - player.position), Vector3.up);
 
+    }
+
+    public void IncreaseSpeed(float increasePercentage)
+    {
+        movementValues.movementSpeed += initialMovementSpeed * increasePercentage;
+    }
+
+    public void IncreaseHealth(float increasePercentage)
+    {
+        playerHealth.HealthUpgrade(increasePercentage);
+    }
+
+    public void IncreaseDamage(float increasePercentage)
+    {
+        //Empty
+    }
+
+    public void IncreaseRateOfFire(float increasePercentage)
+    {
+        //Empty
+    }
+
+    public void IncreaseProjectileSpeed(float increasePercentage)
+    {
+        //Empty
     }
 }

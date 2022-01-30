@@ -10,8 +10,8 @@ using UnityEngine.AI;
 /// Major Revision History: 
 ///     - 29th of January 2022 - The AI will move within given range and shoot function is called after delay (just needs shooting algrothim)
 /// </summary>
-[RequireComponent(typeof(Rigidbody), typeof(NavMeshAgent), typeof(NavMeshObstacle)), RequireComponent(typeof(AttackController))]
-public class AiBehaviour : MonoBehaviour
+[RequireComponent(typeof(Rigidbody), typeof(NavMeshAgent), typeof(NavMeshObstacle)), RequireComponent(typeof(AttackController), typeof(HealthSystem))]
+public class AiBehaviour : MonoBehaviour, IAtributeIncrease
 {
     private const float SmallestInteriorRadius = 0.1f;
     private const float SmallestExteriorRadius = 0.15f;
@@ -24,6 +24,7 @@ public class AiBehaviour : MonoBehaviour
     //AI Information
     private Transform aiTransform = null;
     private CharacterController aiController = null;
+    private HealthSystem aiHealthSystem = null;
     private NavMeshAgent aiNavAgent = null;
     private CapsuleCollider aiCollider = null;
     private AttackController attackController;
@@ -65,6 +66,7 @@ public class AiBehaviour : MonoBehaviour
 
         aiTransform = gameObject.transform;
         aiController = GetComponent<CharacterController>();
+        aiHealthSystem = GetComponent<HealthSystem>();
         aiNavAgent = GetComponent<NavMeshAgent>();
         aiNavAgent.speed = movement.MoveSpeed;
 
@@ -179,5 +181,30 @@ public class AiBehaviour : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void IncreaseSpeed(float increasePercentage)
+    {
+        aiNavAgent.speed += movement.MoveSpeed * increasePercentage;
+    }
+
+    public void IncreaseHealth(float increasePercentage)
+    {
+        aiHealthSystem.HealthUpgrade(increasePercentage);
+    }
+
+    public void IncreaseDamage(float increasePercentage)
+    {
+        //Empty
+    }
+
+    public void IncreaseRateOfFire(float increasePercentage)
+    {
+        shooting.ShootingCooldown -= shooting.ShootingCooldown * increasePercentage;
+    }
+
+    public void IncreaseProjectileSpeed(float increasePercentage)
+    {
+        //Empty
     }
 }

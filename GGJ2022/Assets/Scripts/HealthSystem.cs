@@ -13,6 +13,13 @@ public class HealthSystem : MonoBehaviour, ICanHit
         health = maxHealth;
     }
 
+    public void HealthUpgrade(float increasePercentage)
+    {
+        float increase = maxHealth * increasePercentage;
+        health += increase;
+        maxHealth += increase;
+    }
+
     public void OnHit(float damage)
     {
         health -= damage;
