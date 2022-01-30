@@ -74,6 +74,9 @@ namespace AbilitySystem
     {
         public event Action<WeaponAbilityComponent, bool> OnAdded;
 
+        public Texture2D image;
+        public string description;
+
         public AbilityModifier() { }
 
         public void OnCollection(WeaponAbilityComponent abilityComponent, bool isAI = false)
