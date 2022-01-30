@@ -20,6 +20,16 @@ namespace LevelManager
         public UnityEvent OnUnloaded;
 
 
+        [SerializeField] private GameObject AI;
+
+        private void Start()
+        {
+            foreach (var ai in AISpawnLocations)
+            {
+                Instantiate(AI, ai, Quaternion.identity);
+            }
+        }
+
         /// <summary>
         /// Loads this level and runs OnLoad unity event
         /// </summary>
